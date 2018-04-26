@@ -142,9 +142,8 @@ class MongoDB(object):
                 if connstring in config['config']['members'][i]['host']:
                     priority = config['config']['members'][i]['priority']
                     hidden = int(config['config']['members'][i]['hidden'])
-
-            self.add_metrics('mongodb.priority', priority)
-            self.add_metrics('mongodb.hidden', hidden)
+                    self.add_metrics('mongodb.priority', priority)
+                    self.add_metrics('mongodb.hidden', hidden)
         except errors.PyMongoError:
             print ('Error while fetching replica set configuration.'
                    'Not a member of replica set?')
