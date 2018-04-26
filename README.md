@@ -5,9 +5,11 @@
 1. Import the mongodb template to zabbix and link it to the zabbix mongodb host.
 2. Copy the scripts to mongodb host in /usr/local/bin .
 3. Copy mongodb zabbix agent configuration to /etc/zabbix-agent/zabbix_agentd.d and restart zabbix agent.
+4. `sudo -H python -m pip install pymongo` on mongodb host
 
 Note:
 - Zabbix sender uses zabbix agent configuration to send the metrics, please check the hostname is set in the zabbix agent config /etc/zabbix/zabbix_agentd.conf, by default the hostname may be commented out.
+- You can use `zabbix_agentd -t "mongodb.zabbix.sender" -c /etc/zabbix/zabbix_agentd.conf` to check if python script is able to gather and send metrics.
 
 The following metrics are collected on mongodb version 3.0 by using python mongodb client, and then sent by zabbix sender.
 
